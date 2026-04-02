@@ -203,28 +203,43 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
-/* ===== FAKE DOWNLOAD HANDLER ===== */
-function handleDownload(e) {
-  e.preventDefault();
-  const btn = document.getElementById('download-btn');
-  const originalHTML = btn.innerHTML;
+/* ===== DOWNLOAD CONFIG ===== */
+// Paste your GitHub raw link here:
+const DOWNLOAD_URL = 'https://raw.githubusercontent.com/v3x-cheats/v3x-cheats.github.io/refs/heads/main/V3X-CLIENT-V3.2.1.zip';
 
-  btn.innerHTML = `<svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Preparing download...`;
-  btn.style.pointerEvents = 'none';
+/* ===== DOWNLOAD HANDLER ===== */
+const downloadBtn = document.getElementById('download-btn');
+if (downloadBtn) {
+  downloadBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const originalHTML = downloadBtn.innerHTML;
+    downloadBtn.style.pointerEvents = 'none';
 
-  setTimeout(() => {
-    btn.innerHTML = `<svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Connecting to server...`;
-  }, 1500);
+    downloadBtn.innerHTML = `<svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Preparing download...`;
 
-  setTimeout(() => {
-    btn.innerHTML = `<svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Fetching latest build...`;
-  }, 3500);
-
-  setTimeout(() => {
-    btn.innerHTML = `⚠ Server under maintenance — try again later`;
-    btn.style.pointerEvents = 'auto';
     setTimeout(() => {
-      btn.innerHTML = originalHTML;
+      downloadBtn.innerHTML = `<svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Connecting to server...`;
+    }, 1200);
+
+    setTimeout(() => {
+      downloadBtn.innerHTML = `<svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Fetching latest build...`;
+    }, 2500);
+
+    setTimeout(() => {
+      // Trigger the real download
+      const a = document.createElement('a');
+      a.href = DOWNLOAD_URL;
+      a.download = '';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      downloadBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Download started!`;
+      downloadBtn.style.pointerEvents = 'auto';
+
+      setTimeout(() => {
+        downloadBtn.innerHTML = originalHTML;
+      }, 3000);
     }, 4000);
-  }, 6000);
+  });
 }
