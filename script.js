@@ -203,45 +203,6 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
-/* ===== FAKE YOUTUBE PLAY BUTTON ===== */
-const ytPlayBtn = document.getElementById('yt-play-btn');
-if (ytPlayBtn) {
-  ytPlayBtn.addEventListener('click', () => {
-    const thumb = document.querySelector('.yt-thumbnail');
-    const bg = thumb.querySelector('.yt-thumb-bg');
-
-    // Hide play button & duration
-    ytPlayBtn.style.display = 'none';
-    const dur = thumb.querySelector('.yt-duration');
-    if (dur) dur.style.display = 'none';
-
-    // Show loading spinner then "buffering" message
-    const loader = document.createElement('div');
-    loader.className = 'yt-loader';
-    loader.innerHTML = `
-      <div class="yt-spinner"></div>
-      <div class="yt-loading-text">Loading...</div>
-    `;
-    bg.appendChild(loader);
-
-    setTimeout(() => {
-      loader.querySelector('.yt-loading-text').textContent = 'Buffering...';
-    }, 2000);
-
-    setTimeout(() => {
-      loader.querySelector('.yt-loading-text').textContent = 'Video unavailable';
-      loader.querySelector('.yt-spinner').style.animationPlayState = 'paused';
-      loader.querySelector('.yt-spinner').style.borderTopColor = '#ff4444';
-
-      setTimeout(() => {
-        loader.remove();
-        ytPlayBtn.style.display = '';
-        if (dur) dur.style.display = '';
-      }, 3000);
-    }, 4500);
-  });
-}
-
 /* ===== FAKE DOWNLOAD HANDLER ===== */
 function handleDownload(e) {
   e.preventDefault();
