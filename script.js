@@ -147,7 +147,7 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.15 }
 );
 
-document.querySelectorAll('.feature-card, .stat-card, .yt-player, .yt-card').forEach((el) => {
+document.querySelectorAll('.feature-card, .stat-card, .yt-player').forEach((el) => {
   revealObserver.observe(el);
 });
 
