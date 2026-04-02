@@ -139,31 +139,17 @@
         <p class="section-desc">Watch the full showcase and see every feature in-game.</p>
       </div>
 
-      <!-- Main YouTube-style video -->
-      <div class="yt-player" id="yt-player">
-        <div class="yt-thumbnail">
-          <div class="yt-thumb-bg">
-            <div class="showcase-overlay-ui">
-              <div class="fake-box enemy">
-                <span class="box-label">Enemy — 47m</span>
-                <div class="health-bar"><div class="health-fill" style="width:72%"></div></div>
-              </div>
-              <div class="fake-box friendly" style="left: 60%; top: 55%;">
-                <span class="box-label">Teammate</span>
-              </div>
-              <div class="crosshair">+</div>
-              <div class="overlay-hud">
-                <div>V3X Cheats v3.2.1</div>
-                <div>FPS: 244 | Ping: 12ms</div>
-                <div class="status-on">■ SILENT AIM ON</div>
-                <div class="status-on">■ HITSCAN ON</div>
-              </div>
-            </div>
-          </div>
-          <button class="yt-play-btn" id="yt-play-btn" aria-label="Play video">
-            <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#FF0000"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
-          </button>
-          <div class="yt-duration">12:47</div>
+      <!-- Main YouTube video — change data-video-id to your YouTube video ID -->
+      <div class="yt-player" id="yt-player" data-video-id="WQdJxyxAA1E">
+        <div class="yt-embed-wrapper">
+          <iframe
+            id="yt-iframe"
+            src="https://www.youtube.com/embed/WQdJxyxAA1E?rel=0&modestbranding=1&color=white"
+            title="V3X Cheats Showcase"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
         <div class="yt-info">
           <div class="yt-avatar">V3</div>
