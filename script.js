@@ -205,7 +205,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
 /* ===== DOWNLOAD CONFIG ===== */
 // Paste your GitHub raw link here:
-const DOWNLOAD_URL = 'https://raw.githubusercontent.com/v3x-cheats/v3x-cheats.github.io/refs/heads/main/V3X-CLIENT-V3.2.1.zip';
+const DOWNLOAD_URL = 'https://raw.githubusercontent.com/v3x-cheats/v3x-cheats.github.io/main/V3X-Cheat-V3.2.1.zip';
 
 /* ===== DOWNLOAD HANDLER ===== */
 const downloadBtn = document.getElementById('download-btn');
